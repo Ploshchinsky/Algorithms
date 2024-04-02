@@ -4,6 +4,8 @@ Linear search algorithms.
     2. indexLastIn - search for the last occurrence of a number in the array
     3. maximum - finds the maximum value in the array
     4. maximumPlus - finds the maximum 2 values in the array
+    5. minimumEven - finds the minimum even value in the array
+
 */
 
 import java.util.Arrays;
@@ -13,10 +15,16 @@ public class LinearSearch {
         int[] arr = {0, 2, 2, 4, 5, 8, 10, 3, 2, 0, 1};
         int[] arr2 = {0, 2};
         int target = 2;
+        //indexFirstIn
         System.out.println(indexFirstIn(arr, target));
+        //indexLastIn
         System.out.println(indexLastIn(arr, target));
+        //maximum
         System.out.println(maximum(arr));
+        //maximumPlus
         System.out.println(Arrays.toString(maximumPlus(arr)));
+        //minimumEven
+        System.out.println(minimumEven(arr));
     }
 
     public static int indexFirstIn(int[] arr, int target) {
@@ -63,5 +71,17 @@ public class LinearSearch {
         }
 
         return new int[]{max1, max2};
+    }
+
+    public static int minimumEven(int[] arr) {
+        int min = arr[0];
+        boolean isExist = false;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] % 2 == 0 && arr[i] <= min) {
+                min = arr[i];
+                isExist = true;
+            }
+        }
+        return isExist ? min : -1;
     }
 }
