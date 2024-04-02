@@ -1,3 +1,9 @@
+/*
+Linear search algorithms.
+    1. indexFirstIn - search for the first occurrence of a number in the array
+    2. indexLastIn - search for the last occurrence of a number in the array
+*/
+
 public class LinearSearch {
     public static void main(String[] args) {
         int[] arr = {0, 2, 2, 4, 5, 8, 10, 3, 2, 0, 1};
