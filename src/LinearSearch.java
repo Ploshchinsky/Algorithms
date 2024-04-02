@@ -16,12 +16,11 @@ public class LinearSearch {
     }
 
     public static int indexLastIn(int[] arr, int target) {
-        int index = -1;
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = (arr.length - 1); i >= 0; i--) {
             if (arr[i] == target) {
-                index = i;
+                return i;
             }
         }
-        return index;
+        return -1;
     }
 }
