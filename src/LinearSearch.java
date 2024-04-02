@@ -10,6 +10,7 @@ public class LinearSearch {
         int target = 2;
         System.out.println(indexFirstIn(arr, target));
         System.out.println(indexLastIn(arr, target));
+        System.out.println(maximum(arr));
     }
 
     public static int indexFirstIn(int[] arr, int target) {
@@ -28,5 +29,15 @@ public class LinearSearch {
             }
         }
         return -1;
+    }
+
+    public static int maximum(int[] arr) {
+        int maxIndex = 0;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+        return arr[maxIndex];
     }
 }
