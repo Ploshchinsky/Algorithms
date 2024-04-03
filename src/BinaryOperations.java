@@ -1,3 +1,11 @@
+/*
+*
+* Binary transactions
+*
+* Methods for determining the parity of a number and
+* whether a number is power of 2 // using binary operations
+*
+* */
 public class BinaryOperations {
     public static void main(String[] args) {
         for (int i = 1; i <= 32; i++) {
