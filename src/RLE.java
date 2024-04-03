@@ -1,12 +1,19 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /*
-* Run-length encoding (RLE)
-* or repetition coding is a data compression algorithm that replaces repetitive
-* characters (series) with a single character.
-* */
+ * Run-length encoding (RLE)
+ * or repetition coding is a data compression algorithm that replaces repetitive
+ * characters (series) with a single character.
+ * */
 public class RLE {
     public static void main(String[] args) {
         String test = "AAAABBCDDDDDEE";
+
+        //Single Pass based algorithm
         System.out.println(RLE(test));
+        //Map based algorithm
+        System.out.println(RLEMap(test));
     }
 
     public static String RLE(String string) {
@@ -31,4 +38,27 @@ public class RLE {
         }
         return builder.toString();
     }
+
+    public static String RLEMap(String string) {
+        StringBuilder res = new StringBuilder();
+        Map<Character, Integer> charsMap = new HashMap<>();
+        char[] chars = string.toCharArray();
+
+        charsMap.put(chars[0], 1);
+
+        for (int i = 1; i < chars.length; i++) {
+            if (!charsMap.containsKey(chars[i])) {
+                res.append(chars[i - 1]).append(charsMap.get(chars[i - 1]) > 1 ? charsMap.get(chars[i - 1]) : "");
+                charsMap.put(chars[i], 1);
+            } else {
+                charsMap.put(chars[i], charsMap.get(chars[i]) + 1);
+                if (i == chars.length - 1) {
+                    res.append(chars[i]).append(charsMap.get(chars[i]) > 1 ? charsMap.get(chars[i]) : "");
+                }
+            }
+        }
+
+        return res.toString();
+    }
+
 }
