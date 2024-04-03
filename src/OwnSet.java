@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
+/*
+*
+* Own Set
+* Proprietary implementation of Set using List<>
 
+* */
 public class OwnSet {
     public static void main(String[] args) {
         TestSet mySet = new TestSet(3);
