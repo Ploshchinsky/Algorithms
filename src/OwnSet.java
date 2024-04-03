@@ -1,23 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
-/*
-*
-* Own Set
-* Proprietary implementation of Set using List<>
 
-* */
+/*
+ *
+ * Own Set
+ * Proprietary implementation of Set using List<>
+
+ * */
 public class OwnSet {
     public static void main(String[] args) {
         TestSet mySet = new TestSet(3);
         mySet.add(5);
+        mySet.add(17);
+        mySet.add(14);
         mySet.add(1);
         mySet.add(6);
         mySet.add(21);
-        mySet.delete(5);
+        mySet.delete(17);
 
         System.out.println("Amount of numbers - " + mySet.size());
         System.out.println("Number 21 is exist? - " + mySet.isExist(21));
-        System.out.println("Number 5 is exist? - " + mySet.isExist(5));
+        System.out.println("Number 14 is exist? - " + mySet.isExist(14));
     }
 }
 
@@ -67,9 +70,14 @@ class TestSet {
 
     public void delete(int number) {
         int hash = getHash(number);
-        if (storage[hash] != null) {
-            int index = storage[hash].indexOf(number);
-            storage[hash].remove(index);
+        if (storage[hash] != null && !storage[hash].isEmpty()) {
+            for (int i = 0; i < storage[hash].size(); i++) {
+                if (storage[hash].get(i) == number) {
+                    storage[hash].set(i, storage[hash].getLast());
+                    storage[hash].removeLast();
+                    break;
+                }
+            }
         }
     }
 }
