@@ -1,10 +1,16 @@
 import java.util.*;
 
 /*
- *
  * Check Dictionary
  *
+ * misspellWords() -> Generates extensions for a word dictionary
+ * that adds all available words in various variations of missing a single letter
+ *
+ * matchCounter() -> Reads the text and outputs all matches of words from the
+ * dictionary with words from the text (even if there is an error with the omission of any letter)
+ *
  * */
+
 public class CheckDictionary {
     public static List<String> wordsList;
     public static List<String> extendedWordsList;
