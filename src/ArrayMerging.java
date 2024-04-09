@@ -1,4 +1,9 @@
 import java.util.Arrays;
+/*
+*
+* Array Merging
+* arrayMerge() -> The method performs merging of two arrays
+ * */
 
 public class ArrayMerging {
     private static int[] arrFirst = {1, 1, 5, 8, 12 , 15, 15, 22};
