@@ -7,11 +7,16 @@ import java.util.*;
  * Task: Find the longest sequence of unique characters
  * */
 public class LongestSubstring {
-    private static String input = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\\\]^_`{|}~ ";
+    private static String input =
+            "abcabcabcabbbsjtoasldldllldoogjjgititjjgjabcabcabcabbbsjtoasldldllldoogjjgititjjgj[]123[-0698-!)@$+)^*&";
 
     public static void main(String[] args) {
-        System.out.println("Longest substring amount in [" + input + "] - " + longestSubstringMap(input));
-        System.out.println("Longest substring amount " + longestSubstring2(input));
+        long start = System.currentTimeMillis();
+        System.out.print("Longest substring amount in [" + input + "] - " + longestSubstringMap(input));
+        System.out.print(System.currentTimeMillis() - start + " ms\n");
+        start = System.currentTimeMillis();
+        System.out.print("Longest substring amount " + longestSubstringOpt(input));
+        System.out.println(System.currentTimeMillis() - start + " ms\n");
     }
 
     private static int longestSubstringMap(String s) {
@@ -35,19 +40,22 @@ public class LongestSubstring {
         return stringSet.stream().max(Comparator.comparingInt(String::length)).get().length();
     }
 
-    private static int longestSubstring2(String s) {
-        int maxLength = 0, currentLength = 0;
-        String temp;
-        if (s.length() <= 1) {
-            return s.length();
-        }
-        for (int left = 0, right = 1; right < s.length(); right++) {
-            String currentChar = s.split("")[right];
-            if (s.substring(left, right).contains(currentChar)) {
-                left = right;
+    private static int longestSubstringOpt(String s) {
+        int maxLength = 0;
+        Set<Character> charSet = new HashSet<>();
+
+        for (int left = 0, right = 0; right < s.length(); right++) {
+            if (!charSet.contains(s.charAt(right))) {
+                charSet.add(s.charAt(right));
+                maxLength = Math.max((right - left + 1), maxLength);
+            } else {
+                while (charSet.contains(s.charAt(right))) {
+                    charSet.remove(s.charAt(left));
+                    left++;
+                }
+                charSet.add(s.charAt(right));
             }
-            currentLength = right - left + 1;
-            maxLength = currentLength > maxLength ? currentLength : maxLength;
+
         }
 
         return maxLength;
