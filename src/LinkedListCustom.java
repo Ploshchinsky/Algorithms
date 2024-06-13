@@ -38,6 +38,23 @@ public class LinkedListCustom {
         }
 
     }
+
+    public static boolean isLoop(LinkedListCustom list) {
+        Node fast = list.head;
+        Node slow = list.head;
+
+        try {
+            while (true) {
+                slow = slow.getNext();
+                fast = fast.getNext().getNext();
+                if (slow == fast) {
+                    return true;
+                }
+            }
+        } catch (Exception ex) {
+            return false;
+        }
+    }
 }
 
 class Node {
@@ -89,5 +106,9 @@ class Test {
         System.out.println("----");
         list.delete(n6);
         list.getAll();
+        System.out.println("---");
+        System.out.println("list1 is loop =" + LinkedListCustom.isLoop(list));
+        list.append(n7);
+        System.out.println("list1 is loop =" + LinkedListCustom.isLoop(list));
     }
 }
