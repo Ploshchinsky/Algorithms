@@ -39,6 +39,28 @@ public class LinkedListCustom {
 
     }
 
+    public Node getLast() {
+        Node current = head;
+        while (true) {
+            if (current.getNext() == null) {
+                return current;
+            }
+            current = current.getNext();
+        }
+    }
+
+    public Node pop() {
+        Node current = head;
+        while (true) {
+            if (current.getNext().getNext() == null) {
+                Node temp = current.getNext();
+                current.setNext(null);
+                return temp;
+            }
+            current = current.getNext();
+        }
+    }
+
     public static boolean isLoop(LinkedListCustom list) {
         Node fast = list.head;
         Node slow = list.head;
@@ -106,6 +128,11 @@ class Test {
         System.out.println("----");
         list.delete(n6);
         list.getAll();
+        System.out.println("---");
+        System.out.println("Last element: " + list.getLast().getData());
+        System.out.println("---");
+        System.out.println("Pop element: " + list.pop().getData());
+        System.out.println("Last element after pop: " + list.getLast().getData());
         System.out.println("---");
         System.out.println("list1 is loop =" + LinkedListCustom.isLoop(list));
         list.append(n7);
