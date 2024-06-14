@@ -1,8 +1,8 @@
 public class LinkedListCustom {
-    private Node head;
+    private ListNode head;
 
-    public void append(Node newItem) {
-        Node current = head;
+    public void append(ListNode newItem) {
+        ListNode current = head;
         if (head == null) {
             head = newItem;
         } else {
@@ -17,9 +17,9 @@ public class LinkedListCustom {
         }
     }
 
-    public void delete(Node nodeForDelete) {
-        Node current = head;
-        Node previous = null;
+    public void delete(ListNode nodeForDelete) {
+        ListNode current = head;
+        ListNode previous = null;
         while (true) {
             if (current == nodeForDelete) {
                 previous.setNext(current.getNext());
@@ -31,7 +31,7 @@ public class LinkedListCustom {
     }
 
     public void getAll() {
-        Node current = head;
+        ListNode current = head;
         while (current != null) {
             System.out.println(current.getData());
             current = current.getNext();
@@ -39,8 +39,8 @@ public class LinkedListCustom {
 
     }
 
-    public Node getLast() {
-        Node current = head;
+    public ListNode getLast() {
+        ListNode current = head;
         while (true) {
             if (current.getNext() == null) {
                 return current;
@@ -49,11 +49,11 @@ public class LinkedListCustom {
         }
     }
 
-    public Node pop() {
-        Node current = head;
+    public ListNode pop() {
+        ListNode current = head;
         while (true) {
             if (current.getNext().getNext() == null) {
-                Node temp = current.getNext();
+                ListNode temp = current.getNext();
                 current.setNext(null);
                 return temp;
             }
@@ -62,8 +62,8 @@ public class LinkedListCustom {
     }
 
     public static boolean isLoop(LinkedListCustom list) {
-        Node fast = list.head;
-        Node slow = list.head;
+        ListNode fast = list.head;
+        ListNode slow = list.head;
 
         try {
             while (true) {
@@ -79,11 +79,11 @@ public class LinkedListCustom {
     }
 }
 
-class Node {
+class ListNode {
     private String data;
-    private Node next;
+    private ListNode next;
 
-    public Node(String data) {
+    public ListNode(String data) {
         this.data = data;
         next = null;
     }
@@ -96,25 +96,25 @@ class Node {
         this.data = data;
     }
 
-    public Node getNext() {
+    public ListNode getNext() {
         return next;
     }
 
-    public void setNext(Node next) {
+    public void setNext(ListNode next) {
         this.next = next;
     }
 }
 
 class Test {
     public static void main(String[] args) {
-        Node n1 = new Node("It's a 1");
-        Node n2 = new Node("It's a 2");
-        Node n3 = new Node("It's a 3");
-        Node n4 = new Node("It's a 4");
-        Node n5 = new Node("It's a 5");
-        Node n6 = new Node("It's a 6");
-        Node n7 = new Node("It's a 7");
-        Node n8 = new Node("It's a 8");
+        ListNode n1 = new ListNode("It's a 1");
+        ListNode n2 = new ListNode("It's a 2");
+        ListNode n3 = new ListNode("It's a 3");
+        ListNode n4 = new ListNode("It's a 4");
+        ListNode n5 = new ListNode("It's a 5");
+        ListNode n6 = new ListNode("It's a 6");
+        ListNode n7 = new ListNode("It's a 7");
+        ListNode n8 = new ListNode("It's a 8");
         LinkedListCustom list = new LinkedListCustom();
         list.append(n1);
         list.append(n2);
