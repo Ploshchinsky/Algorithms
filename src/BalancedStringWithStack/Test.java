@@ -17,7 +17,7 @@ public class Test {
                 "Balanced String definition method is working correctly)";
         String text4 = "(This text string is (used to verify) that the " +
                 "Balanced String definition method is working correctly)(";
-        String text5 = ") (  ) (";
+        String text5 = "{) (  ) (}";
         String text6 = "( (  ) (   )   ( )   )";
 
         System.out.println(isBalancedString(text1));
@@ -29,20 +29,34 @@ public class Test {
     }
 
     private static boolean isBalancedString(String text1) {
-        Stack<Character> characterStack = new Stack<>();
+        Stack<Character> braces = new Stack<>();
         for (char c : text1.toCharArray()) {
             switch (c) {
-                case '(':
-                    characterStack.push(c);
+                case '(', '{', '[', '<':
+                    braces.push(c);
                     break;
                 case ')':
-                    if (characterStack.empty()) {
+                    if (braces.empty() || braces.pop() != '(') {
                         return false;
                     }
-                    characterStack.pop();
+                    break;
+                case '}':
+                    if (braces.empty() || braces.pop() != '{') {
+                        return false;
+                    }
+                    break;
+                case ']':
+                    if (braces.empty() || braces.pop() != '[') {
+                        return false;
+                    }
+                    break;
+                case '>':
+                    if (braces.empty() || braces.pop() != '<') {
+                        return false;
+                    }
                     break;
             }
         }
-        return characterStack.empty();
+        return braces.empty();
     }
 }
