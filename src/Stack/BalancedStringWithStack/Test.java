@@ -1,4 +1,4 @@
-package BalancedStringWithStack;
+package Stack.BalancedStringWithStack;
 
 import java.util.Stack;
 

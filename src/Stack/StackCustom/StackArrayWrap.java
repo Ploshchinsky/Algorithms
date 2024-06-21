@@ -1,6 +1,4 @@
-package StackCustom;
-
-import java.util.Arrays;
+package Stack.StackCustom;
 
 public class StackArrayWrap {
     private int[] data;
