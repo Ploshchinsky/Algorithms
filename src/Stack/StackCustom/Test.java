@@ -11,12 +11,16 @@ public class Test {
         }
 
 
-        System.out.println(Arrays.toString(stack.printStack()));
+        System.out.println("Array - " + Arrays.toString(stack.printStack()));
         System.out.println("Min - " + stack.getMin());
+        System.out.println("Max - " + stack.getMax());
+        System.out.println("Top - " + stack.peek());
         while (stack.size() != 0) {
             stack.pop();
-            System.out.println(Arrays.toString(stack.printStack()));
+            System.out.println("Array - " + Arrays.toString(stack.printStack()));
             System.out.println("Min - " + stack.getMin());
+            System.out.println("Max - " + stack.getMax());
+            System.out.println("Top - " + stack.peek());
         }
     }
 }
