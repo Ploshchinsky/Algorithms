@@ -11,7 +11,7 @@ public class SumOfTwo {
     public static void main(String[] args) {
         int[] numbers = {0, 11, 23, -5, 17, 5, 9, 3};
         int target = 12;
-        sumOfTwo(numbers,target);
+        sumOfTwo(numbers, target);
     }
 
     private static void sumOfTwo(int[] array, int target) {
