@@ -5,7 +5,7 @@ public class LongestPalindrome {
     private static int beginIndex = 0;
 
     public static void main(String[] args) {
-        String test = "1xxCCxx1";
+        String test = "cbbd";
         String test2 = "0--=1xCx20002xCx1sj8716";
 
         System.out.println(longestPalindrome(test));
@@ -18,21 +18,21 @@ public class LongestPalindrome {
         beginIndex = 0;
     }
 
-    private static String longestPalindrome(String input) {
-        if (input.length() <= 1) {
-            return input;
+    private static String longestPalindrome(String s) {
+        if (s.length() <= 1) {
+            return s;
         }
 
-        for (int i = 0; i < input.length(); i++) {
-            findPalindrome(input, i, i);
-            findPalindrome(input, i, i + 1);
+        for (int i = 0; i < s.length(); i++) {
+            findPalindrome(s, i, i);
+            findPalindrome(s, i, i + 1);
         }
-        return input.substring(beginIndex, beginIndex + maxLength);
+        return s.substring(beginIndex, beginIndex + maxLength);
     }
 
-    private static boolean findPalindrome(String s, int left, int right) {
+    private static boolean findPalindrome(String str, int left, int right) {
         int currentLength = 0;
-        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+        while (left >= 0 && right < str.length() && str.charAt(left) == str.charAt(right)) {
             currentLength = right - left + 1;
             if (currentLength > maxLength) {
                 maxLength = currentLength;
@@ -41,7 +41,7 @@ public class LongestPalindrome {
             left--;
             right++;
         }
-        return currentLength == s.length();
+        return currentLength == str.length();
     }
 
 }
